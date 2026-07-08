@@ -1,7 +1,8 @@
+import clsx from 'clsx';
 import styles from './Popover.module.scss';
 
-function wrapper({ children }) {
-  return <div className={styles.wrapper}>{children}</div>;
+function wrapper({ children, className }) {
+  return <div className={clsx(styles.wrapper, className)}>{children}</div>;
 }
 
 export default wrapper;

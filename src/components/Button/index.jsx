@@ -2,7 +2,19 @@ import clsx from 'clsx';
 import styles from './Button.module.scss';
 import { Link } from 'react-router-dom';
 
-function Button({ to, href, variant, size, disable, children, rounded, className, ...passProps }) {
+function Button({
+  to,
+  href,
+  variant,
+  size,
+  disable,
+  children,
+  rounded,
+  className,
+  leftIcon,
+  rightIcon,
+  ...passProps
+}) {
   let Comp = 'button';
   const props = {
     ...passProps,
@@ -31,7 +43,9 @@ function Button({ to, href, variant, size, disable, children, rounded, className
 
   return (
     <Comp className={classes} {...props}>
-      <span>{children}</span>
+      {leftIcon && <span className={styles.icon}>{leftIcon}</span>}
+      <span className={styles.title}>{children}</span>
+      {rightIcon && <span className={styles.icon}>{rightIcon}</span>}
     </Comp>
   );
 }
