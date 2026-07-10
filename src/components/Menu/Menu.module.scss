@@ -6,11 +6,12 @@
   padding-bottom: 8px;
 }
 
+// Menu item
 .menuItem {
   justify-content: flex-start;
   width: 100%;
   border-radius: 0px;
-  font-weight: 500;
+  font-weight: 600;
   padding: 11px 16px;
 
   span {
@@ -20,4 +21,28 @@
   &:hover {
     background-color: rgba(22, 24, 35, 0.03);
   }
+
+  &.separate {
+    border-top: 1px solid rgba(22, 24, 35, 0.12);
+  }
+}
+
+// Header menu
+.header {
+  position: relative;
+  height: 50px;
+  margin-top: -8px;
+}
+
+.backBtn {
+  width: 50px;
+  height: 100%;
+  cursor: pointer;
+}
+
+.headerTitle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
