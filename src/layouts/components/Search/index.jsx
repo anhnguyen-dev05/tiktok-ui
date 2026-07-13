@@ -57,42 +57,48 @@ function Search() {
   };
 
   return (
-    <HeadlessTippy
-      interactive
-      visible={showResult && searchResult.length > 0}
-      render={(attrs) => (
-        <div className={styles.searchResult} tabIndex="-1" {...attrs}>
-          <PopoverWrapper>
-            <h4 className={styles.searchTitle}>Accounts</h4>
-            {searchResult.map((result) => (
-              <AccountItem key={result.id} data={result} />
-            ))}
-          </PopoverWrapper>
-        </div>
-      )}
-      onClickOutside={handleHideResult}
-    >
-      <div className={styles.search}>
-        <input
-          ref={inputRef}
-          value={searchValue}
-          placeholder="Search accounts and videos"
-          spellCheck={false}
-          onChange={handleChange}
-          onFocus={() => setShowResult(true)}
-        />
-        {!!searchValue && !loading && (
-          <button className={styles.clear} onClick={hanleClear}>
-            <FontAwesomeIcon icon={faCircleXmark} />
-          </button>
+    /*  Interactive tippy element may not be accessible via keyboard navigation because it is not directly after the reference element in the DOM source order. 
+        Using a wrapper <div> or <span> tag around the reference element solves this by creating a new parentNode context. 
+        Specifying `appendTo: document.body` silences this warning, but it assumes you are using a focus management solution to handle keyboard navigation. 
+    */
+    <div>
+      <HeadlessTippy
+        interactive
+        visible={showResult && searchResult.length > 0}
+        render={(attrs) => (
+          <div className={styles.searchResult} tabIndex="-1" {...attrs}>
+            <PopoverWrapper>
+              <h4 className={styles.searchTitle}>Accounts</h4>
+              {searchResult.map((result) => (
+                <AccountItem key={result.id} data={result} />
+              ))}
+            </PopoverWrapper>
+          </div>
         )}
-        {loading && <FontAwesomeIcon className={styles.loading} icon={faCircleNotch} />}
+        onClickOutside={handleHideResult}
+      >
+        <div className={styles.search}>
+          <input
+            ref={inputRef}
+            value={searchValue}
+            placeholder="Search accounts and videos"
+            spellCheck={false}
+            onChange={handleChange}
+            onFocus={() => setShowResult(true)}
+          />
+          {!!searchValue && !loading && (
+            <button className={styles.clear} onClick={hanleClear}>
+              <FontAwesomeIcon icon={faCircleXmark} />
+            </button>
+          )}
+          {loading && <FontAwesomeIcon className={styles.loading} icon={faCircleNotch} />}
 
-        <button className={styles.searchBtn}>
-          <SearchIcon />
-        </button>
-      </div>
-    </HeadlessTippy>
+          <button className={styles.searchBtn}>
+            <SearchIcon />
+          </button>
+        </div>
+      </HeadlessTippy>
+    </div>
   );
 }
 

@@ -6,6 +6,10 @@
   padding-bottom: 8px;
 }
 
+.menuBody {
+  overflow-y: auto;
+}
+
 // Menu item
 .menuItem {
   justify-content: flex-start;
@@ -32,6 +36,7 @@
   position: relative;
   height: 50px;
   margin-top: -8px;
+  flex-shrink: 0;
 }
 
 .backBtn {

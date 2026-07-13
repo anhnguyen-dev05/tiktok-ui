@@ -31,7 +31,6 @@ function Menu({ children, items = [], hideOnClick = false, onChange = () => {} }
 
   return (
     <Tippy
-      visible
       delay={[0, 700]}
       placement="bottom"
       offset={[-80, 10]}
@@ -48,7 +47,7 @@ function Menu({ children, items = [], hideOnClick = false, onChange = () => {} }
                 }}
               />
             )}
-            {renderItems()}
+            <div className={styles.menuBody}>{renderItems()}</div>
           </PopoverWrapper>
         </div>
       )}
