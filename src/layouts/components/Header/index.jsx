@@ -1,8 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faCircleXmark,
-  faCircleNotch,
-  faMagnifyingGlass,
   faEllipsisVertical,
   faEarthAsia,
   faCircleQuestion,
@@ -12,19 +9,16 @@ import {
   faGear,
   faSignOut,
 } from '@fortawesome/free-solid-svg-icons';
-import { useEffect, useState } from 'react';
-import HeadlessTippy from '@tippyjs/react/headless';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 
 import Button from '@/components/Button';
 import styles from './Header.module.scss';
 import logo from '@/assets/images/logo.svg';
-import { Wrapper as PopoverWrapper } from '@/components/Popover';
-import AccountItem from '@/components/AccountItem';
 import Menu from '@/components/Menu';
 import Image from '@/components/Image';
 import { UploadIcon, MessageIcon, InboxIcon } from '@/components/Icons';
+import Search from '../Search';
 
 const MENU_ITEMS = [
   {
@@ -58,14 +52,7 @@ const MENU_ITEMS = [
 ];
 
 function Header() {
-  const [searchResult, setSearchResult] = useState([]);
   const currentUser = true;
-
-  useEffect(() => {
-    setTimeout(() => {
-      setSearchResult([]);
-    }, 0);
-  }, []);
 
   // Handle logic
   const handleMenuChange = (menuItem) => {
@@ -104,33 +91,7 @@ function Header() {
           <img src={logo} alt="TikTok" />
         </div>
 
-        <HeadlessTippy
-          interactive
-          visible={searchResult.length > 0}
-          render={(attrs) => (
-            <div className={styles.searchResult} tabIndex="-1" {...attrs}>
-              <PopoverWrapper>
-                <h4 className={styles.searchTitle}>Accounts</h4>
-                <AccountItem />
-                <AccountItem />
-                <AccountItem />
-                <AccountItem />
-              </PopoverWrapper>
-            </div>
-          )}
-        >
-          <div className={styles.search}>
-            <input placeholder="Search accounts and videos" />
-            <button className={styles.clear}>
-              <FontAwesomeIcon icon={faCircleXmark} />
-            </button>
-            <FontAwesomeIcon className={styles.loading} icon={faCircleNotch} spin spinReverse />
-
-            <button className={styles.searchBtn}>
-              <FontAwesomeIcon icon={faMagnifyingGlass} />
-            </button>
-          </div>
-        </HeadlessTippy>
+        <Search />
 
         <div className={styles.actions}>
           {currentUser ? (
