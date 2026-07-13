@@ -5,7 +5,7 @@ import styles from './Menu.module.scss';
 import MenuItem from './MenuItem';
 import Header from './Header';
 
-function Menu({ children, items = [], onChange = () => {} }) {
+function Menu({ children, items = [], hideOnClick = false, onChange = () => {} }) {
   const [history, setHistory] = useState([{ data: items }]);
   const current = history[history.length - 1];
 
@@ -31,9 +31,11 @@ function Menu({ children, items = [], onChange = () => {} }) {
 
   return (
     <Tippy
+      visible
       delay={[0, 700]}
       placement="bottom"
       offset={[-80, 10]}
+      hideOnClick={hideOnClick}
       interactive
       render={(attrs) => (
         <div className={styles.menuList} tabIndex="-1" {...attrs}>
