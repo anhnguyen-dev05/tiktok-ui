@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import PropTypes from 'prop-types';
 import styles from './Button.module.scss';
 import { Link } from 'react-router-dom';
 
@@ -49,5 +50,19 @@ function Button({
     </Comp>
   );
 }
+
+Button.propTypes = {
+  to: PropTypes.string,
+  href: PropTypes.string,
+  variant: PropTypes.string,
+  size: PropTypes.string,
+  disable: PropTypes.bool,
+  children: PropTypes.node.isRequired,
+  rounded: PropTypes.bool,
+  className: PropTypes.string,
+  leftIcon: PropTypes.node,
+  rightIcon: PropTypes.node,
+  onClick: PropTypes.func,
+};
 
 export default Button;
