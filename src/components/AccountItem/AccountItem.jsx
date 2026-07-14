@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -24,4 +25,4 @@ AccountItem.propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-export default AccountItem;
+export default memo(AccountItem);
