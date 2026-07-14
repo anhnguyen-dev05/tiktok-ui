@@ -20,7 +20,7 @@ import Menu from '@/components/Menu';
 import Image from '@/components/Image';
 import { UploadIcon, MessageIcon, InboxIcon } from '@/components/Icons';
 import Search from '../Search';
-import routesConfig from '@/config/routes';
+import config from '@/config';
 
 const MENU_ITEMS = [
   {
@@ -210,7 +210,7 @@ function Header() {
     <header className={styles.wrapper}>
       <div className={styles.inner}>
         <div className={styles.logo}>
-          <Link to={routesConfig.home} className={styles.logoLink}>
+          <Link to={config.routes.home} className={styles.logoLink}>
             <img src={logo} alt="TikTok" />
           </Link>
         </div>
